@@ -46,4 +46,4 @@ stages:
       steps:
         - download: current
           artifact: WebApp
-        - bash: 'cf login -a https://api.cf.eu10.hana.ondemand.com -u "$(CF-USER)" -p "$(CF-PASSWORD)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/WebApp/MySampleApp.mtar -f'
+        - bash: 'cf login -a https://api.cf.eu10.hana.ondemand.com -u "$(CF-USER)" -p "$(CF-PASSWORD)" -o "$(CF-ORG)" -s "$(CF-SPACET)" && cf deploy $(Pipeline.Workspace)/WebApp/MySampleApp.mtar -f'
