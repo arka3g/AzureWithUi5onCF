@@ -35,14 +35,8 @@ stages:
         - publish: $(System.DefaultWorkingDirectory)/.
           artifact: WebApp
       
-- stage: security
-  displayName: Security Platform
-- task: SnykSecurityScan@0
-  inputs:
-    serviceConnectionEndpoint: 'snykpiper'
-    testType: 'app'
-    monitorOnBuild: true
-    failOnIssues: true
+-  task: WhiteSource Bolt@19
+  displayName: 'WhiteSource Bolt'
 
            
 
