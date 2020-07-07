@@ -29,9 +29,8 @@ stages:
     inputs:
       serviceConnectionEndpoint: 'snykpiper'
       testType: 'app'
-      monitorOnBuild: true
+      monitorOnBuild: false
       failOnIssues: true
-      projectName: 'snykpipeline'
   jobs:
     - job: build
       pool:
