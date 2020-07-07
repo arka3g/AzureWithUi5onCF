@@ -25,12 +25,6 @@ trigger:
 stages:
 - stage: build
   displayName: Build MTA for SAP Cloud Platform
-  - task: SnykSecurityScan@0
-    inputs:
-      serviceConnectionEndpoint: 'snykpiper'
-      testType: 'app'
-      monitorOnBuild: false
-      failOnIssues: true
   jobs:
     - job: build
       pool:
@@ -40,7 +34,17 @@ stages:
         - bash: 'mtaBuild --build-target CF --mtar MySampleApp.mtar build'
         - publish: $(System.DefaultWorkingDirectory)/.
           artifact: WebApp
-          
+      
+- stage: security
+  displayName: Security Platform
+- task: SnykSecurityScan@0
+  inputs:
+    serviceConnectionEndpoint: 'snykpiper'
+    testType: 'app'
+    monitorOnBuild: true
+    failOnIssues: true
+
+           
 
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (cf)
