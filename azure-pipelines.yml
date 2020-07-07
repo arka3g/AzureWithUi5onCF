@@ -34,9 +34,9 @@ stages:
         - bash: 'mtaBuild --build-target CF --mtar MySampleApp.mtar build'
         - publish: $(System.DefaultWorkingDirectory)/.
           artifact: WebApp
-      
--  task: WhiteSource Bolt@19
-  displayName: 'WhiteSource Bolt'
+        -  task: WhiteSource Bolt@20
+
+        
 
            
 
