@@ -47,7 +47,8 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
       container: cfcli
+      environment: 'production'
       steps:
-        - download: current
-          artifact: WebApp
-        - bash: 'cf login -a https://api.cf.us10.hana.ondemand.com -u "$(CF-USER-UI5)" -p "$(CF-PASSWORD)" -o "$(CF-ORGI)" -s "$(CF-SPACENAME)" && cf bg-deploy $(Pipeline.Workspace)/WebApp/MySampleApp.mtar -f'
+            -  download: current
+               artifact: WebApp
+            -  bash: 'cf login -a https://api.cf.us10.hana.ondemand.com -u "$(CF-USER-UI5)" -p "$(CF-PASSWORD)" -o "$(CF-ORGI)" -s "$(CF-SPACENAME)" && cf bg-deploy $(Pipeline.Workspace)/WebApp/MySampleApp.mtar -f'
