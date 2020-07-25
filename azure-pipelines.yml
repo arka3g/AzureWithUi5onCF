@@ -42,14 +42,16 @@ stages:
 
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (cf)
-  environment: 'Production'
   jobs:
     - job: deploy
       pool:
         vmImage: 'ubuntu-latest'
+              
       
       container: cfcli
       steps:
         - download: current
           artifact: WebApp
+          env: 'Production'
+            
         - bash: 'cf login -a https://api.cf.us10.hana.ondemand.com -u "$(CF-USER-UI5)" -p "$(CF-PASSWORD)" -o "$(CF-ORGI)" -s "$(CF-SPACENAME)" && cf bg-deploy $(Pipeline.Workspace)/WebApp/MySampleApp.mtar -f'
