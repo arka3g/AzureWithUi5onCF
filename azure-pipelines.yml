@@ -42,11 +42,12 @@ stages:
 
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (cf)
+  environment: 'Production'
   jobs:
     - job: deploy
       pool:
         vmImage: 'ubuntu-latest'
-      environment: 'Production'
+      
       container: cfcli
       steps:
         - download: current
